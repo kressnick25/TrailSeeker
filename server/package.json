@@ -3,14 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node -r esm ./bin/www",
+    "debug": "node -r esm --inspect ./bin/www"
   },
   "dependencies": {
+    "async": "^3.1.0",
+    "axios": "^0.19.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "eslint": "^6.1.0",
+    "esm": "^3.2.25",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "request": "^2.88.0"
   }
 }

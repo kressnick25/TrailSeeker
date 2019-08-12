@@ -1,0 +1,16 @@
+# TRAILS
+    https://rapidapi.com/trailapi/api/trailapi
+
+# DARK SKY WEATHER
+    https://darksky.net/
+
+# GOOGLE MAPS JS
+
+    ## key
+    AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU 
+
+    ## Whitelist IP here ->
+    https://console.cloud.google.com/apis/credentials/key/2cc73d68-54e4-496e-82e3-bdff44ccda9b?project=trailseeker-1565603028828&authuser=0
+
+    ### Distance Matrix api
+    https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=New+York+City,NY&key=%20AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU
