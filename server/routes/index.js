@@ -28,34 +28,38 @@ router.post('/', function(req, res, next){
           let trails = response.data.data;
           let c = 0;
           for (let i = 0; i < trails.length; i++) {
-            requestWeather(trails[i].lat, trails[i].lon)
-              .then(response =>{
-                if (response.data.currently){
-                  // add currentWeather value to trail object
-                  trails[i].currentWeather = response.data.currently.summary;
-                  c++;
-                }
-                // Wait for all api requests to complete before responding
-                // TODO do this with promises 
-                if (c  === trails.length - 1){
-                  res.json(trails);
-                }
-              })
-              .catch(err => console.log("Error in Dark Sky Weather API request\n", err));
+            // requestWeather(trails[i].lat, trails[i].lon)
+            //   .then(response =>{
+            //     if (response.data.currently){
+            //       // add currentWeather value to trail object
+            //       trails[i].weather = response.data.daily.summary;
+            //       c++;
+            //     }
+            //     // Wait for all api requests to complete before responding
+            //     // TODO do this with promises 
+            //     if (c  === trails.length - 1){
+            //       res.json(trails);
+            //     }
+            //   })
+            //   .catch(err => console.log("Error in Dark Sky Weather API request\n", err));
+                // Get Google distance info for each Trail
+                requestGoogle(lat, lng, trails[i].lat, trails[i].lon)
+                  .then(response => {
+                    if (response.data.rows){
+                      let elements = response.data.rows[0].elements[0]
+                      trails[i].distance = elements.distance.text;
+                      trails[i].duration = elements.duration.text;
+                      c++;
+                    }
+                    if (c === trails.length - 1) {
+                      res.json(trails);
+                    }
+                  })
+                  .catch(err => console.log("Error in Google Distance API request\n", err))
+              
             }
 
-          // Get Google distance info for each Trail
-          // trails.forEach(trail => {
-          //   requestGoogle(lat, lng, trail.lat, trail.lng)
-          //     .then(response => {
-          //       if (response.data.rows){
-          //         let elements = response.data.rows[0].elements[0]
-          //         trail.distance = elements.distance;
-          //         trail.duration = elements.duration;
-          //       }
-          //     })
-          //     .catch(err => console.log("Error in Google Distance API request\n", err))
-          // })
+         
         }
     })
     .catch(err => console.log("Error in Trails API request", err));

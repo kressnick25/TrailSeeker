@@ -5,12 +5,14 @@ const WEATHER_API_KEY = '4dd6049677f3443d7241f189a8fe20f1';
 
 export async function requestGoogle (originLat, originLng, destinationLat, destinationLong){
     let url = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+    let origin = originLat + ',' + originLng;
+    let destination = destinationLat + ',' + destinationLong;
     try{
         // TODO fix why doesnt work with params instead of urlstring
         return await axios.get( url, {
             params: {
-                origins: originLat + ',' + originLng,
-                destinations: destinationLat + ',' + destinationLong,
+                origins: origin,
+                destinations: destination,
                 units: 'metric',
                 key: GOOGLE_API_KEY,
             }
@@ -25,7 +27,12 @@ export async function requestWeather (lat, lng) {
     // Format url for weird api standard
     let url = "https://api.darksky.net/forecast/" + WEATHER_API_KEY + "/" + lat + "," + lng;
     try{
-        return await axios.get(url);
+        return await axios.get(url, {
+            params: {
+                // request Celcius and KM/h
+                units: "si",
+            }
+        });
     } catch (error) {
         console.error(error);
     }

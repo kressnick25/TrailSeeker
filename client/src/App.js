@@ -11,14 +11,14 @@ function App() {
             .then(body => setLocation(body.location))
             .catch(err => err);
   }
-  
+  // TODO google location passes but nothing returned in json
   return (
     <div className="App">
         <h1>TrailSeeker</h1>
         <p>Welcome to Trail Seeker</p>
-        { submitted ? 
-          <Content location={{lat: "-27.436350",  lng: "153.002120"}} /> : 
-          <button onClick={e => setSubmitted(true)}>Use My Location</button>
+        { location ? 
+          <Content location={location} /> : 
+          <button onClick={e => handleMyLocation()}>Use My Location</button>
         }
     </div>
   );

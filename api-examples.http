@@ -1,10 +1,12 @@
 # Dark Sky API
-GET  https://api.darksky.net/forecast/4dd6049677f3443d7241f189a8fe20f1/-27.480200,153.035360
+GET  https://api.darksky.net/forecast/4dd6049677f3443d7241f189a8fe20f1/-27.4265367,153.0029963
 ## /forecast/[KEY]/[LAT],[LNG]
 
 ###
 # Trails API
-GET https://trailapi-trailapi.p.rapidapi.com/trails/explore/?lat=-27.480200&lon=153.035360
+GET https://trailapi-trailapi.p.rapidapi.com/trails/explore/
+    ?lat=-27.4265367
+    &lon=153.0029963
 x-rapidapi-host: trailapi-trailapi.p.rapidapi.com
 x-rapidapi-key: 9357762584mshd7e19dbaf4c4e70p1d44f6jsn00c1586a8c94
 
@@ -23,7 +25,7 @@ GET https://maps.googleapis.com/maps/api/distancematrix/json
 ### Distance Matrix API - lat/lng
 GET https://maps.googleapis.com/maps/api/distancematrix/json
     ?units=metric
-    &origins=-27.436350,153.002120
+    &origins=-27.4265367,153.0029963
     &destinations=-27.480200,153.035360
     &key=AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU
 
