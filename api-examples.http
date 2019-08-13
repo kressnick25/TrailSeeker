@@ -1,0 +1,29 @@
+# Dark Sky API
+GET  https://api.darksky.net/forecast/4dd6049677f3443d7241f189a8fe20f1/-27.480200,153.035360
+## /forecast/[KEY]/[LAT],[LNG]
+
+###
+# Trails API
+GET https://trailapi-trailapi.p.rapidapi.com/trails/explore/?lat=-27.480200&lon=153.035360
+x-rapidapi-host: trailapi-trailapi.p.rapidapi.com
+x-rapidapi-key: 9357762584mshd7e19dbaf4c4e70p1d44f6jsn00c1586a8c94
+
+
+## GOOGLE ##
+## whitelist here
+https://console.cloud.google.com/apis/credentials/key/2cc73d68-54e4-496e-82e3-bdff44ccda9b?project=trailseeker-1565603028828&authuser=0
+
+### Distance Matrix API - Names
+GET https://maps.googleapis.com/maps/api/distancematrix/json
+    ?units=metric
+    &origins=29+Quandong+St,Ashgrove
+    &destinations=Kangaroo+Point+Cliffs+Park,QLD
+    &key=AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU
+
+### Distance Matrix API - lat/lng
+GET https://maps.googleapis.com/maps/api/distancematrix/json
+    ?units=metric
+    &origins=-27.436350,153.002120
+    &destinations=-27.480200,153.035360
+    &key=AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU
+
