@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-//const createError = require('http-errors');
+const createError = require('http-errors');
 import {requestGoogle, requestWeather, requestTrails}  from '../src/request';
 const axios = require('axios')
 
@@ -14,13 +14,13 @@ const DEFAULT_LNG = '153.002120';
 //   res.render('index', { title: 'Trail Seeker' });
 // });
 
-router.get('/', function(req, res, next){
+router.post('/', function(req, res, next){
   // check params have been supplied
-  // if (!req.body.lat && !req.body.lng){
+  // if (!req.body.lat || !req.body.lng){
   //   return next(createError(400, 'lat and lng are required parameters'));
   // }
-  const lat = DEFAULT_LAT;
-  const lng = DEFAULT_LNG;
+  let lat = req.body.lat;
+  let lng = req.body.lng;
   const getTrails = requestTrails(lat, lng)
     .then(response => {
       if (response.data.results) {

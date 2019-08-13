@@ -27,3 +27,16 @@ GET https://maps.googleapis.com/maps/api/distancematrix/json
     &destinations=-27.480200,153.035360
     &key=AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU
 
+### Geolocation
+POST https://www.googleapis.com/geolocation/v1/geolocate
+    ?key=AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU
+
+
+### Local test
+POST http://localhost:3000/
+content-type: application/json
+
+{
+    "lat": "-27.436350",
+    "lng": "153.002120"
+}
