@@ -3,9 +3,6 @@ var router = express.Router();
 const createError = require('http-errors');
 import {requestGoogle, requestWeather, requestTrails} from '../src/request';
 
-const axios = require('axios')
-
-
 const DEFAULT_LAT = '-27.436350';
 const DEFAULT_LNG = '153.002120';
 
@@ -15,10 +12,10 @@ const DEFAULT_LNG = '153.002120';
 // });
 
 router.post('/', function (req, res, next) {
-    // check params have been supplied
-    // if (!req.body.lat || !req.body.lng){
-    //   return next(createError(400, 'lat and lng are required parameters'));
-    // }
+    //check params have been supplied
+    if (!req.body.lat || !req.body.lng){
+      return next(createError(400, 'lat and lng are required parameters'));
+    }
     let lat = req.body.lat;
     let lng = req.body.lng;
     requestTrails(lat, lng)
@@ -36,7 +33,7 @@ router.post('/', function (req, res, next) {
                                     trails[i].weather = response.data.daily.summary;
                                 }
                             })
-                            .catch(err => console.log("Error in Dark Sky Weather API request\n", err))
+                            .catch(err => createError(500, "Error in Dark Sky Weather API request " + err))
                     );
                     fetches.push(
                         // Get Google distance info for each Trail
@@ -48,14 +45,14 @@ router.post('/', function (req, res, next) {
                                     trails[i].duration = elements.duration.text;
                                 }
                             })
-                            .catch(err => console.log("Error in Google Distance API request\n", err))
+                            .catch(err => createError(500, "Error in Google Distance API request " + err ))
                     );
                 }
                 Promise.all(fetches)
                     .then(() => res.json(trails));
             }
         })
-        .catch(err => console.log("Error in Trails API request", err));
+        .catch(err => createError(500, "Error in Trails API request " + err));
 
 
 });
