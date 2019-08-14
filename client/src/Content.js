@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Trail from './Trail';
-import {Card, Container, Loader, Segment, Dimmer} from 'semantic-ui-react';
+import {Card, Container, Loader, Transition} from 'semantic-ui-react';
 
-const url = "http://localhost:3000/"
+const url = "http://localhost:3000/";
 
 export function Content (props) {
     const [data, setData] = useState();
@@ -28,7 +28,7 @@ export function Content (props) {
     return (
         <Container textAlign='justified'>
             <Card.Group centered>
-                {data.map(trail => <Trail data={trail} key={trail.id}/> )}
+                {   data.map(trail => <Trail data={trail} key={trail.id}/> )}
             </Card.Group>
         </Container>
     ) 

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {Card, Icon, Accordion, Rating} from 'semantic-ui-react';
-import {capitalizeString} from "./helpers";
+import {Card, Icon, Accordion, Rating, Divider} from 'semantic-ui-react';
+import {capitalizeFirst} from "./helpers";
 import WeatherIcon from 'react-icons-weather';
 import WeatherForecast from "./WeatherForecast";
 
@@ -24,10 +24,10 @@ export function Trail (props) {
                   </Accordion.Content>
               </Accordion>
               <p>Length: {data.length} km</p>
-              <p>Difficulty: <b>{data.difficulty ? capitalizeString(data.difficulty) : "Unknown"}</b></p>
+              <p>Difficulty: <b>{data.difficulty ? capitalizeFirst(data.difficulty) : "Unknown"}</b></p>
               {data.distance &&
               <TravelInfo lat={data.lat} lng={data.lon} distance={data.distance} duration={data.duration} />}
-              <div> <WeatherForecast data={data.weather}/> </div>
+              <WeatherForecast data={data.weather}/>
           </Card.Content>
       </Card>
     )
