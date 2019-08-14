@@ -8,7 +8,6 @@ export async function requestGoogle (originLat, originLng, destinationLat, desti
     let origin = originLat + ',' + originLng;
     let destination = destinationLat + ',' + destinationLong;
     try{
-        // TODO fix why doesnt work with params instead of urlstring
         return await axios.get( url, {
             params: {
                 origins: origin,
@@ -22,7 +21,6 @@ export async function requestGoogle (originLat, originLng, destinationLat, desti
     }
 }
 
-// TODO
 export async function requestWeather (lat, lng) {
     // Format url for weird api standard
     let url = "https://api.darksky.net/forecast/" + WEATHER_API_KEY + "/" + lat + "," + lng;
