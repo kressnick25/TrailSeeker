@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const createError = require('http-errors');
+const path=require('path');
 import {requestGoogle, requestWeather, requestTrails} from '../src/request';
 
 const DEFAULT_LAT = '-27.436350';
@@ -10,6 +11,10 @@ const DEFAULT_LNG = '153.002120';
 // router.get('/', function(req, res) {
 //   res.render('index', { title: 'Trail Seeker' });
 // });
+
+router.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/build/index.html'));
+});
 
 router.post('/', function (req, res, next) {
     //check params have been supplied

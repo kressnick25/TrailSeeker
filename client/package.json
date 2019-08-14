@@ -14,7 +14,10 @@
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "move" : "rm -r ../server/build && mv build ../server/",
+    "deploy" : "yarn build && yarn move"
+
   },
   "eslintConfig": {
     "extends": "react-app"
