@@ -30,7 +30,7 @@ router.post('/', function (req, res, next) {
                             .then(response => {
                                 if (response.data.currently) {
                                     // add currentWeather value to trail object
-                                    trails[i].weather = response.data.daily.summary;
+                                    trails[i].weather = response.data.daily.data;
                                 }
                             })
                             .catch(err => createError(500, "Error in Dark Sky Weather API request " + err))
