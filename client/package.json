@@ -7,7 +7,6 @@
     "react-dom": "^16.9.0",
     "react-icons-weather": "^1.0.5",
     "react-scripts": "3.1.0",
-    "react-svg": "^10.0.17",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.3"
   },

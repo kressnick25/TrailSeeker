@@ -1,8 +1,4 @@
 import React from 'react';
-import {ReactComponent as Sunny} from "./icons/clear-day.svg";
-
-// TODO find better way to import these
-
 
 export function WeatherForecast(props) {
     let data = props.data;
