@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import {Card, Icon, Accordion, Rating} from 'semantic-ui-react';
 import {capitalizeString} from "./helpers";
 import WeatherIcon from 'react-icons-weather';
+import WeatherForecast from "./WeatherForecast";
+
+
 
 export function Trail (props) {
     let data = props.data;
@@ -24,7 +27,7 @@ export function Trail (props) {
               <p>Difficulty: <b>{data.difficulty ? capitalizeString(data.difficulty) : "Unknown"}</b></p>
               {data.distance &&
               <TravelInfo lat={data.lat} lng={data.lon} distance={data.distance} duration={data.duration} />}
-              <p>Weather: <b>{data.weather[0].summary}</b></p>
+              <div> <WeatherForecast data={data.weather}/> </div>
           </Card.Content>
       </Card>
     )
