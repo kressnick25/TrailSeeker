@@ -3,7 +3,7 @@ import Trail from './Trail';
 import {Card, Container, Loader, Transition} from 'semantic-ui-react';
 
 // SET THIS TO INSTANCE IP
-const url = "http://localhost/";
+const url = "http://3.104.75.166:3000/";
 
 export function Content (props) {
     const [data, setData] = useState();
