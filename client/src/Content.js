@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Trail from './Trail';
 import {Card, Container, Loader, Transition} from 'semantic-ui-react';
 
-const url = "http://localhost:3000/";
+// SET THIS TO INSTANCE IP
+const url = "http://localhost/";
 
 export function Content (props) {
     const [data, setData] = useState();
