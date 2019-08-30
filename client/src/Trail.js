@@ -1,20 +1,26 @@
 import React, {useState} from "react";
-import {Card, Icon, Accordion, Rating, Divider} from 'semantic-ui-react';
+import {Card, Icon, Accordion, Rating, Divider, Label, Segment} from 'semantic-ui-react';
 import {capitalizeFirst} from "./helpers";
 import WeatherIcon from 'react-icons-weather';
-import WeatherForecast from "./WeatherForecast";
+import {Weather} from "./Weather";
 
 
 
 export function Trail (props) {
-    let data = props.data;
+    const data = props.data;
     const [descActive, setActive] = useState(false);
     return (
       <Card color='green'>
           <Card.Content>
-              <Card.Header>{data.name}</Card.Header>
-              <Rating icon='star' disabled defaultRating={data.rating} maxRating={5} />
-              <Accordion>
+              <Card.Header>{data.name}
+              <Rating
+                  style={{'floated': 'right'}}
+                  icon='star'
+                  disabled
+                  defaultRating={data.rating}
+                  maxRating={5} />
+              </Card.Header><br/>
+              <Accordion styled>
                   <Accordion.Title active={descActive} onClick={e=> setActive(!descActive)}>
                       <Icon name='dropdown' />
                       Description
@@ -23,11 +29,20 @@ export function Trail (props) {
                       <p>{data.description}</p><br />
                   </Accordion.Content>
               </Accordion>
-              <p>Length: {data.length} km</p>
-              <p>Difficulty: <b>{data.difficulty ? capitalizeFirst(data.difficulty) : "Unknown"}</b></p>
+              <Segment attached>
+                <span>Length: {data.length} km</span>
+                <span style={{'float': 'right'}}>
+                    Difficulty:
+                    <b>
+                        {data.difficulty ?
+                        capitalizeFirst(data.difficulty) :
+                        "Unknown"}
+                    </b>
+                </span>
+              </Segment>
               {data.distance &&
               <TravelInfo lat={data.lat} lng={data.lon} distance={data.distance} duration={data.duration} />}
-              <WeatherForecast data={data.weather}/>
+              <Weather data={data.weather} current={data.currentWeather}/>
           </Card.Content>
       </Card>
     )
@@ -37,9 +52,18 @@ function TravelInfo(props) {
     const MapsUrlApi = "https://www.google.com/maps/search/?api=1&query="
     
     return (
-        <a href={MapsUrlApi + props.lat + ',' + props.lng} target="_blank">
-            <p><Icon name='car' />{props.distance}, {props.duration}</p>
-        </a>
+        <Segment basic textAlign={'center'}>
+            <Label
+                as={'a'}
+                href={MapsUrlApi + props.lat + ',' + props.lng}
+                color={'orange'}
+                target={'_blank'}
+                size={'large'}
+            >
+                <Icon name='car' />
+                {props.distance}, {props.duration}
+            </Label>
+        </Segment>
     )
 }
 

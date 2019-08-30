@@ -35,6 +35,7 @@ router.post('/', function (req, res, next) {
                             .then(response => {
                                 if (response.data.currently) {
                                     // add currentWeather value to trail object
+                                    trails[i].currentWeather = response.data.currently;
                                     trails[i].weather = response.data.daily.data;
                                 }
                             })

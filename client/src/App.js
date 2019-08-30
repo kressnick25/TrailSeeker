@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
         <Container>
-            <Segment inverted color={'olive'}>
+            <Segment inverted color={'green'}>
             <Header as='h1' style={{'pad-top': '5px'}}>
                 TrailSeeker
                 <Header.Subheader>Welcome to Trail Seeker</Header.Subheader>
@@ -30,7 +30,17 @@ function App() {
             <Divider/>
             { location ?
               <Content location={location} /> :
-              <Button primary loading={loading} onClick={e => handleMyLocation()}><Icon name={'location arrow'}/>Use My Location</Button>
+                <div className={'location'}>
+                    <Button
+                        primary
+                        loading={loading}
+                        onClick={e => handleMyLocation()}
+                        size={'large'}
+                    >
+                        <Icon name={'location arrow'}/>
+                        Use My Location
+                    </Button>
+                </div>
             }
         </Container>
     </div>

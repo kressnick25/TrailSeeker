@@ -28,7 +28,7 @@ export async function requestWeather (lat, lng) {
         return await axios.get(url, {
             params: {
                 // request Celcius and KM/h
-                units: "si",
+                units: "ca",
             }
         });
     } catch (error) {

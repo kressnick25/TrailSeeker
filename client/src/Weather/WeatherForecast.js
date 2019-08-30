@@ -1,26 +1,30 @@
 import React from 'react';
-import {capitalizeAll, removeDash} from "./helpers";
-import {Popup} from 'semantic-ui-react';
+import {capitalizeAll, removeDash} from "../helpers";
+import {Label, Popup} from 'semantic-ui-react';
 
 export function WeatherForecast(props) {
     let data = props.data;
     return (
         <div className={'weatherForecast'}>
-            Forecast:<br/>
+            <Label as='a' basic color='teal' ribbon content={'Forecast'}/>
             <span>
                 <table>
+
+                    <thead>
                     <tr>
-                    {data.map(day =>
-                        <td align={'center'}>{getDayInitial(day.time)}</td>
+                    {data.map((day, index) =>
+                        <td key={index}  align={'center'}>{getDayInitial(day.time)}</td>
                     )}
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
-                    {data.map(day =>
-                        <td>
+                    {data.map((day, index) =>
+                        <td key={index}>
                             <Popup
                                 header={capitalizeAll( removeDash(day.icon ))}
                                 content={`High: ${day.temperatureHigh} Low: ${day.temperatureLow}`}
-                                trigger={<img src={require(`./icons/${day.icon}.svg`)}
+                                trigger={<img src={require(`../icons/${day.icon}.svg`)}
                                               alt={'icon'}
                                               width={'28em'}
                                               height={'36em'}/>}
@@ -28,6 +32,7 @@ export function WeatherForecast(props) {
                         </td>
                     )}
                     </tr>
+                    </tbody>
                 </table>
             </span>
         </div>
