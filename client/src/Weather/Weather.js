@@ -12,20 +12,28 @@ export function Weather (props) {
                 <tbody>
                 <tr>
                     <Label
+                        color={'teal'}
+                        basic
                         content={'Temp'}
                         detail={current.temperature.toFixed(0) + " C"}
                     />
                     <Label
+                        color={'teal'}
+                        basic
                         content={'Humidity'}
                         detail={(current.humidity * 100).toFixed(0) + "%"}
                     />
                 </tr>
                 <tr>
                     <Label
+                        color={'teal'}
+                        basic
                         content={'Wind'}
                         detail={current.windSpeed.toFixed(1) + 'km/h'}
                     />
                     <Label
+                        color={'teal'}
+                        basic
                         content={'Rain chance'}
                         detail={current.precipProbability + '%'}
                     />

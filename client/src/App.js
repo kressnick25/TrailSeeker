@@ -6,18 +6,7 @@ import {Button, Header, Divider, Container, Segment, Icon} from "semantic-ui-rea
 const GEOLOCATION_API = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU";
 
 function App() {
-  const [location, setLocation] = useState();
-  const [loading, setLoading] = useState(false);
-  function handleMyLocation(e) {
-    setLoading(true);
-    fetch(GEOLOCATION_API, {method: 'post'})
-            .then(response => response.json())
-            .then(body => {
-              setLocation(body.location);
-              setLoading(false);  
-            })
-            .catch(err => err);
-  }
+  const [submitted, setSubmitted] = useState(false);
   return (
     <div className="App">
         <Container>
@@ -28,13 +17,12 @@ function App() {
             </Header>
             </Segment>
             <Divider/>
-            { location ?
-              <Content location={location} /> :
+            { submitted ?
+              <Content/> :
                 <div className={'location'}>
-                    <Button
+                        <Button
                         primary
-                        loading={loading}
-                        onClick={e => handleMyLocation()}
+                        onClick={e => setSubmitted(true)}
                         size={'large'}
                     >
                         <Icon name={'location arrow'}/>

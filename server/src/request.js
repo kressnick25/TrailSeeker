@@ -52,3 +52,14 @@ export async function requestTrails (lat, lng) {
         console.error(error);
     }
 }
+
+export async function requestLocation(ip) {
+    // DEVELOPMENT VAR
+    ip =  "131.181.158.12";
+    try {
+        return await axios.get("https://api.ipdata.co/" + ip + "?api-key=687368cfc3fb6c8d351412dcb4cf7455f0d688ecda35962595685e04")
+    } catch (error) {
+        console.error(error);
+    }
+
+}

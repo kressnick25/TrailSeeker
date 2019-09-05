@@ -4,29 +4,19 @@ import {Card, Container, Loader, Transition} from 'semantic-ui-react';
 
 // SET THIS TO INSTANCE IP
 // const url = "http://3.104.75.166:3000/";
-const url = "http://localhost:3000/";
+const url = "http://localhost:3000/api";
 
 export function Content (props) {
     const [data, setData] = useState();
+
     useEffect(() => {
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              },
-            body: JSON.stringify({
-                lat: props.location.lat.toString(),
-                lng: props.location.lng.toString(),
-            }
-        )})
+        fetch(url)
             .then(response => response.json())
             .then(body => setData(body))
             .catch(err => err);
-    }, [/*location*/])
-    if (!data) return <Loader active size='large'>Loading</Loader>
+    }, []);
 
-
+    if (!data) return <Loader inverted active size='large'>Loading</Loader>;
     return (
         <Container textAlign='justified'>
             <Card.Group centered>

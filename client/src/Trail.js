@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import {Card, Icon, Accordion, Rating, Divider, Label, Segment} from 'semantic-ui-react';
+import {Card, Icon, Accordion, Rating, Divider, Label, Segment, Button} from 'semantic-ui-react';
 import {capitalizeFirst} from "./helpers";
 import WeatherIcon from 'react-icons-weather';
+import ReactCardFlip from 'react-card-flip';
 import {Weather} from "./Weather";
 
 
@@ -10,7 +11,7 @@ export function Trail (props) {
     const data = props.data;
     const [descActive, setActive] = useState(false);
     return (
-      <Card color='green'>
+      <Card color='green' key={'front'}>
           <Card.Content>
               <Card.Header>{data.name}
               <Rating
@@ -20,7 +21,18 @@ export function Trail (props) {
                   defaultRating={data.rating}
                   maxRating={5} />
               </Card.Header><br/>
-              <Accordion styled>
+              <Segment attached id={'length'}>
+                  <span>Length: {data.length} km</span>
+                  <span style={{'float': 'right'}}>
+                    Difficulty:
+                    <b>
+                        {data.difficulty ?
+                            capitalizeFirst(data.difficulty) :
+                            "Unknown"}
+                    </b>
+                </span>
+              </Segment>
+              <Accordion>
                   <Accordion.Title active={descActive} onClick={e=> setActive(!descActive)}>
                       <Icon name='dropdown' />
                       Description
@@ -29,22 +41,13 @@ export function Trail (props) {
                       <p>{data.description}</p><br />
                   </Accordion.Content>
               </Accordion>
-              <Segment attached>
-                <span>Length: {data.length} km</span>
-                <span style={{'float': 'right'}}>
-                    Difficulty:
-                    <b>
-                        {data.difficulty ?
-                        capitalizeFirst(data.difficulty) :
-                        "Unknown"}
-                    </b>
-                </span>
-              </Segment>
+
               {data.distance &&
               <TravelInfo lat={data.lat} lng={data.lon} distance={data.distance} duration={data.duration} />}
-              <Weather data={data.weather} current={data.currentWeather}/>
+             <Weather data={data.weather} current={data.currentWeather}/>
           </Card.Content>
-      </Card>
+          </Card>
+
     )
 }
 
