@@ -43,9 +43,13 @@ body {
 }
 
 .ui.green.card .content .header {
-    color: hsl(120, 22%, 14%)
+    color: hsl(120, 22%, 14%);
 }
 
 .ui.orange.label{
     color: hsl(24, 89%, 98%) !important;
+}
+
+.ui.card > .content p, .ui.cards > .card > .content p {
+    color: hsl(120, 22%, 1%);
 }
