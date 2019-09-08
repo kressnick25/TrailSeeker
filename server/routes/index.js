@@ -6,9 +6,6 @@ import {requestGoogle, requestWeather, requestTrails, requestLocation} from '../
 
 const router = express.Router();
 
-// define vars outside loop to prevent memory leak
-
-
 let lat;
 let lng;
 let trails;
@@ -28,7 +25,20 @@ router.get('/api', function (req, res) {
                 .then(response => {
                     if (response.data.results) {
                         // Get weather info for each Trail
-                        trails = response.data.data;
+                        // trim repsonse to only data needed
+                        trails = response.data.data.map((trail) => {
+                            const {id, length, description, difficulty, rating, lat, lon} = trail;
+                            return {
+                                id: id,
+                                length: length,
+                                description: description,
+                                difficulty: difficulty,
+                                rating: rating,
+                                lat: lat,
+                                lon: lon,
+                            }
+                        });
+
                         fetches = [];
                         for (let i = 0; i < trails.length; i++) {
                             // push each fetch promise to array
@@ -38,8 +48,24 @@ router.get('/api', function (req, res) {
                                     .then(response => {
                                         if (response.data.currently) {
                                             // add currentWeather value to trail object
-                                            trails[i].currentWeather = response.data.currently;
-                                            trails[i].weather = response.data.daily.data;
+                                            // trim to necessary json data
+                                            const {temperature, humidity, windSpeed, precipProbability} = response.data.currently;
+                                            trails[i].currentWeather = {
+                                                temperature: temperature,
+                                                humidity: humidity,
+                                                windSpeed: windSpeed,
+                                                precipProbability: precipProbability,
+                                            };
+
+                                            trails[i].weather = response.data.daily.data.map((day) => {
+                                                const {time, temperatureHigh, temperatureLow, icon} = day;
+                                                return {
+                                                    time: time,
+                                                    temperatureHigh: temperatureHigh,
+                                                    temperatureLow: temperatureLow,
+                                                    icon: icon,
+                                                }
+                                            });
                                         }
                                     })
                                     .catch(err => createError(500, "Error in Dark Sky Weather API request " + err))
