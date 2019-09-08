@@ -5,30 +5,28 @@ const path=require('path');
 const requestIp = require('request-ip');
 import {requestGoogle, requestWeather, requestTrails, requestLocation} from '../src/request';
 
-const DEFAULT_LAT = '-27.436350';
-const DEFAULT_LNG = '153.002120';
-
-/* GET home page. */
-// router.get('/', function(req, res) {
-//   res.render('index', { title: 'Trail Seeker' });
-// });
-
-router.get('/api', function (req, res, next) {
-    //check params have been supplied
-    //return next(createError(400, 'lat and lng are required parameters'));
+// define vars outside loop to prevent memory leak
+let lat;
+let lng;
+let trails;
+let fetches = [];
+let elements;
+// Single API endpoint. Returns JSON with Trails, Weather data and driving distance
+router.get('/api', function (req, res) {
     // get client ip via middleware
     const clientIp = requestIp.getClientIp(req);
     // Geolocate client location
     requestLocation(clientIp)
         .then((response) => {
-            let lat = response.data.latitude;
-            let lng = response.data.longitude;
+            lat = response.data.latitude;
+            lng = response.data.longitude;
+            // Get trails list from Trail API
             requestTrails(lat, lng)
                 .then(response => {
                     if (response.data.results) {
                         // Get weather info for each Trail
-                        let trails = response.data.data;
-                        let fetches = [];
+                        trails = response.data.data;
+                        fetches = [];
                         for (let i = 0; i < trails.length; i++) {
                             // push each fetch promise to array
                             fetches.push(
@@ -49,7 +47,7 @@ router.get('/api', function (req, res, next) {
                                 requestGoogle(lat, lng, trails[i].lat, trails[i].lon)
                                     .then(response => {
                                         if (response.data.rows) {
-                                            let elements = response.data.rows[0].elements[0]
+                                            elements = response.data.rows[0].elements[0];
                                             trails[i].distance = elements.distance.text;
                                             trails[i].duration = elements.duration.text;
                                         }
