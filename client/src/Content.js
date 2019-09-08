@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Trail from './Trail';
-import {Card, Container, Loader, Transition} from 'semantic-ui-react';
+import {Card, Container, Loader} from 'semantic-ui-react';
 
 // SET THIS TO INSTANCE IP
 // const url = "http://3.104.75.166:3000/";

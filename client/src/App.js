@@ -3,10 +3,9 @@ import './App.css';
 import Content from "./Content"
 import {Button, Header, Divider, Container, Segment, Icon} from "semantic-ui-react";
 
-const GEOLOCATION_API = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU";
-
 function App() {
   const [submitted, setSubmitted] = useState(false);
+
   return (
     <div className="App">
         <Container>

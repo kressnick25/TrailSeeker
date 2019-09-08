@@ -1,8 +1,6 @@
 import React, {useState} from "react";
-import {Card, Icon, Accordion, Rating, Divider, Label, Segment, Button} from 'semantic-ui-react';
+import {Card, Icon, Accordion, Rating, Label, Segment} from 'semantic-ui-react';
 import {capitalizeFirst} from "./helpers";
-import WeatherIcon from 'react-icons-weather';
-import ReactCardFlip from 'react-card-flip';
 import {Weather} from "./Weather";
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import WeatherForecast from "./WeatherForecast";
-import {Label, Grid} from 'semantic-ui-react';
+import {Label} from 'semantic-ui-react';
 
 export function Weather (props) {
     const data = props.data;

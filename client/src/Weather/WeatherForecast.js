@@ -9,7 +9,6 @@ export function WeatherForecast(props) {
             <Label as='a' basic color='teal' ribbon content={'Forecast'}/>
             <span>
                 <table>
-
                     <thead>
                     <tr>
                     {data.map((day, index) =>
