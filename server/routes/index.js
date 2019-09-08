@@ -1,11 +1,14 @@
-var express = require('express');
-var router = express.Router();
-const createError = require('http-errors');
-const path=require('path');
-const requestIp = require('request-ip');
+import express from "express";
+import createError from "http-errors";
+import path from "path";
+import requestIp from "request-ip";
 import {requestGoogle, requestWeather, requestTrails, requestLocation} from '../src/request';
 
+const router = express.Router();
+
 // define vars outside loop to prevent memory leak
+
+
 let lat;
 let lng;
 let trails;

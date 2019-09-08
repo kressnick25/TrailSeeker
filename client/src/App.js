@@ -13,7 +13,7 @@ function App() {
             <Segment inverted color={'green'}>
             <Header as='h1' style={{'pad-top': '5px'}}>
                 TrailSeeker
-                <Header.Subheader>Welcome to Trail Seeker</Header.Subheader>
+                <Header.Subheader>Find Mountain Biking trails near you</Header.Subheader>
             </Header>
             </Segment>
             <Divider/>

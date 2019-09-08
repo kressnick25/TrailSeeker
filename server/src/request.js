@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from "axios";
 
 const GOOGLE_API_KEY = 'AIzaSyBAeo-vXKY-RSDl3YIT2SKsDZrc67ejQWU';
 const WEATHER_API_KEY = '4dd6049677f3443d7241f189a8fe20f1';
