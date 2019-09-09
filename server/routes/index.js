@@ -6,12 +6,6 @@ import {requestGoogle, requestWeather, requestTrails, requestLocation} from '../
 
 const router = express.Router();
 
-let lat;
-let lng;
-let trails;
-let fetches = [];
-let elements;
-
 // Single API endpoint. Returns JSON with Trails, Weather data and driving distance
 router.get('/api', async function (req, res) {
     // get client ip via middleware
@@ -20,15 +14,15 @@ router.get('/api', async function (req, res) {
     // Geolocate client location
     let response = await requestLocation(clientIp);
 
-    lat = response.data.latitude;
-    lng = response.data.longitude;
+    const lat = response.data.latitude;
+    const lng = response.data.longitude;
 
     // Get trails list from Trail API
     response = await requestTrails(lat, lng);
 
     // Get weather info for each Trail
     // trim repsonse to only data needed
-    trails = response.data.data.map((trail) => {
+    let trails = response.data.data.map((trail) => {
         const {id, length, description, difficulty, rating, lat, lon, name} = trail;
         return {
             id: id,
@@ -42,7 +36,7 @@ router.get('/api', async function (req, res) {
         }
     });
 
-    fetches = [];
+    let fetches = [];
     for (let i = 0; i < trails.length; i++) {
         // push each fetch promise to array
         fetches.push(
@@ -79,7 +73,7 @@ router.get('/api', async function (req, res) {
             requestGoogle(lat, lng, trails[i].lat, trails[i].lon)
                 .then(response => {
                     if (response.data.rows) {
-                        elements = response.data.rows[0].elements[0];
+                        let elements = response.data.rows[0].elements[0];
                         trails[i].distance = elements.distance.text;
                         trails[i].duration = elements.duration.text;
                     }

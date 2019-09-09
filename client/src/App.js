@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import Content from "./Content"
 import {Button, Header, Divider, Container, Segment, Icon} from "semantic-ui-react";
+import MadeWith from "./MadeWith";
 
 function App() {
   const [submitted, setSubmitted] = useState(false);
@@ -10,7 +11,7 @@ function App() {
     <div className="App">
         <Container>
             <Segment inverted color={'green'}>
-            <Header as='h1' style={{'pad-top': '5px'}}>
+            <Header as='h1'>
                 TrailSeeker
                 <Header.Subheader>Find Mountain Biking trails near you</Header.Subheader>
             </Header>
@@ -29,6 +30,7 @@ function App() {
                     </Button>
                 </div>
             }
+            {/*<MadeWith/>*/}
         </Container>
     </div>
   );

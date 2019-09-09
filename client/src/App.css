@@ -6,6 +6,12 @@ body {
     background-color: #4e784e;
 }
 
+
+@media (max-width:700px){
+    .ui.inverted.segment > .ui.header {
+        text-align: left;
+    }
+}
 .ui.cards > .green.card, .ui.green.card, .ui.green.cards > .card {
     box-shadow: 0 0 0 1px #d4d4d5, 0 4px 0 0 #21ba45, 0 1px 3px 0 #d4d4d5;
     transition: 0.2s;
@@ -44,6 +50,7 @@ body {
 
 .ui.green.card .content .header {
     color: hsl(120, 22%, 14%);
+    text-align: left;
 }
 
 .ui.orange.label{
@@ -52,4 +59,17 @@ body {
 
 .ui.card > .content p, .ui.cards > .card > .content p {
     color: hsl(120, 22%, 1%);
+}
+
+.MadeWith {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: yellow;
+}
+
+.MadeWith img {
+    height: 50px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
