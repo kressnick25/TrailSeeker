@@ -3,7 +3,7 @@ FROM node:10
 # Create app dir
 WORKDIR /usr/src/app
 
-#install yarn because
+# use same packag manager used in development
 RUN npm install -g yarn
 
 # move package and lock files
