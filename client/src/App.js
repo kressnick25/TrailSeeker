@@ -6,15 +6,7 @@ import MadeWith from "./MadeWith";
 
 function App() {
   const [submitted, setSubmitted] = useState(false);
-  // get url path to fetch from server
-  useEffect(()  => {
-    if (typeof window !== 'undefined'){
-      const urlPath = window.location.protocol + '//' + window.location.host;
-      console.log('base url path: ' + urlPath);
-    } else {
-      console.error('Error getting url path')
-    }
-  }, [])
+
   return (
     <div className="App">
         <Container>
