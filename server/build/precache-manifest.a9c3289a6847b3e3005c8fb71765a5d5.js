@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5d1818279f1a0cbb0b589271475495c9",
+    "revision": "398c4c3d117b1579a959026c10e84191",
     "url": "/index.html"
   },
   {
-    "revision": "d7960c054b1a8cdc1642",
-    "url": "/static/css/2.0aaa5e4a.chunk.css"
+    "revision": "355514ee344fe6c4c913",
+    "url": "/static/css/2.621b5bde.chunk.css"
   },
   {
-    "revision": "12d14758bf7b5e3d69e6",
-    "url": "/static/css/main.fc2718f8.chunk.css"
+    "revision": "bb472d79123c1360a2b2",
+    "url": "/static/css/main.daa4efbb.chunk.css"
   },
   {
-    "revision": "d7960c054b1a8cdc1642",
-    "url": "/static/js/2.0b1e60ab.chunk.js"
+    "revision": "355514ee344fe6c4c913",
+    "url": "/static/js/2.22596d9c.chunk.js"
   },
   {
-    "revision": "12d14758bf7b5e3d69e6",
-    "url": "/static/js/main.e2577f70.chunk.js"
+    "revision": "bb472d79123c1360a2b2",
+    "url": "/static/js/main.af307745.chunk.js"
   },
   {
     "revision": "83e7f8b54e61b1cbddf8",
@@ -56,12 +56,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/cloudy.79b3c647.svg"
   },
   {
+    "revision": "c747c2336b195939d35abe2839bb4f50",
+    "url": "/static/media/darkSky.c747c233.png"
+  },
+  {
     "revision": "9c74e172f87984c48ddf5c8108cabe67",
     "url": "/static/media/flags.9c74e172.png"
   },
   {
     "revision": "3694ef67610075498c91cdb7b2bfb2f4",
     "url": "/static/media/fog.3694ef67.svg"
+  },
+  {
+    "revision": "5d316d6ce4d2303069da4fe9ee8b2b2e",
+    "url": "/static/media/googleMaps.5d316d6c.png"
   },
   {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
@@ -118,26 +126,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "35404d3acb64aeb0eb68d9da2e81f3d7",
     "url": "/static/media/snow.35404d3a.svg"
-  },
-  {
-    "revision": "1cd48d78f06d33973d9d761d426e69bf",
-    "url": "/static/media/weathericons-regular-webfont.1cd48d78.woff2"
-  },
-  {
-    "revision": "4618f0de2a818e7ad3fe880e0b74d04a",
-    "url": "/static/media/weathericons-regular-webfont.4618f0de.ttf"
-  },
-  {
-    "revision": "4b658767da6bd92ce2addb3ce512784d",
-    "url": "/static/media/weathericons-regular-webfont.4b658767.eot"
-  },
-  {
-    "revision": "8cac70ebda3f23ce472110d9f21e8593",
-    "url": "/static/media/weathericons-regular-webfont.8cac70eb.woff"
-  },
-  {
-    "revision": "ecaf8b481729b18f6a8494d9f691cdae",
-    "url": "/static/media/weathericons-regular-webfont.ecaf8b48.svg"
   },
   {
     "revision": "2a8661ec0e951cce9158ce43bf453430",

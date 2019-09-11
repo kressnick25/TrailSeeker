@@ -9,7 +9,7 @@ const router = express.Router();
 // Single API endpoint. Returns JSON with Trails, Weather data and driving distance
 router.get('/api', async function (req, res) {
     // get client ip via middleware
-    const clientIp = requestIp.getClientIp(req);
+    const clientIp = requestIp.getClientIp(req).slice(7);
 
     // Geolocate client location
     let response = await requestLocation(clientIp);
@@ -22,6 +22,7 @@ router.get('/api', async function (req, res) {
 
     // Get weather info for each Trail
     // trim repsonse to only data needed
+    let output = {};
     let trails = response.data.data.map((trail) => {
         const {id, length, description, difficulty, rating, lat, lon, name} = trail;
         return {
@@ -35,6 +36,10 @@ router.get('/api', async function (req, res) {
             lon: lon,
         }
     });
+
+    output.userIp = clientIp;
+    output.userLat = lat;
+    output.userLng = lng;
 
     let fetches = [];
     for (let i = 0; i < trails.length; i++) {
@@ -84,7 +89,10 @@ router.get('/api', async function (req, res) {
 
     // Wait for every promise in loop to fulfil before sending response
     Promise.all(fetches)
-        .then(() => res.json(trails));
+        .then(() => {
+            output.trails = trails;
+            res.json(output)
+        });
 
 });
 

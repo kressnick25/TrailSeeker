@@ -50,8 +50,7 @@ export function Trail (props) {
 }
 
 function TravelInfo(props) {
-    const MapsUrlApi = "https://www.google.com/maps/search/?api=1&query="
-    
+    const MapsUrlApi = "https://www.google.com/maps/search/?api=1&query=";
     return (
         <Segment basic textAlign={'center'}>
             <Label

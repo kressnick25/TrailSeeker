@@ -2,10 +2,9 @@ import React, {useState, useEffect} from 'react';
 import Trail from './Trail';
 import {Card, Container, Loader} from 'semantic-ui-react';
 
-// SET THIS TO INSTANCE IP
-// const url = "http://3.104.75.166:3000/";
-const url = "http://localhost:3000/api";
-
+// Development use local backend on different port
+// const url = localhost:3000/api
+const url = '/api';
 export function Content (props) {
     const [data, setData] = useState();
 
@@ -19,8 +18,9 @@ export function Content (props) {
     if (!data) return <Loader inverted active size='large'>Loading</Loader>;
     return (
         <Container textAlign='justified'>
+          <h3 style={{'color': "white", "textAlign": "center"}}>Your IP: {data.userIp} Your Location - Lat: {data.userLat} Long: {data.userLng}</h3>
             <Card.Group centered>
-                {   data.map(trail => <Trail data={trail} key={trail.id}/> )}
+                {   data.trails.map(trail => <Trail data={trail} key={trail.id}/> )}
             </Card.Group>
         </Container>
     ) 
