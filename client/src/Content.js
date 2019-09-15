@@ -4,8 +4,8 @@ import {Card, Container, Loader, Message, Button, Checkbox} from 'semantic-ui-re
 
 // Development use local backend on different port
 // const url = localhost:3000/api
-const testUrl = 'http://localhost:3000/api?test=True';
-const baseUrl = 'http://localhost:3000/api';
+const testUrl = '/api?test=True';
+const baseUrl = '/api';
 export function Content (props) {
     const [data, setData] = useState();
     const [error, setError] = useState(false);
