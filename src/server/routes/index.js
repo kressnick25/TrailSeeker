@@ -1,5 +1,4 @@
 import express from "express";
-import createError from "http-errors";
 import path from "path";
 import requestIp from "request-ip";
 import {requestGoogle, requestWeather, requestTrails, requestLocation} from '../src/request';
@@ -132,7 +131,7 @@ router.get('/api', async function (req, res, next) {
 
 });
 
-// Serve static build
+// Serve React static build
 router.get('/', (req,res) =>{
     res.sendFile(path.join(__dirname+'/build/index.html'));
 });

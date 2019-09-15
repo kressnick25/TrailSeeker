@@ -1,22 +1,15 @@
 FROM node:10
-
-# Create app dir
+# create app directory
 WORKDIR /usr/src/app
-
-# use same packag manager used in development
+# use same package manager used in development
 RUN npm install -g yarn
-
-# move package and lock files
-COPY ./server/package.json ./
-COPY ./server/yarn.lock ./
-
+# copy source code from server folder to app
+COPY ./src/server .
 # install node_modules
 RUN yarn
-
-# copy source code from server folder
-COPY ./server .
-
+# open port 3000 in container
 EXPOSE 3000
+# start node instance
 CMD ["yarn", "start"]
 
 
