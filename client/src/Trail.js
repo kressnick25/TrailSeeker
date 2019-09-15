@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Card, Icon, Accordion, Rating, Label, Segment} from 'semantic-ui-react';
+import {Card, Icon, Accordion, Rating, Label, Segment, Message} from 'semantic-ui-react';
 import {capitalizeFirst} from "./helpers";
 import {Weather} from "./Weather";
 
@@ -40,9 +40,11 @@ export function Trail (props) {
                   </Accordion.Content>
               </Accordion>
 
-              {data.distance &&
-              <TravelInfo lat={data.lat} lng={data.lon} distance={data.distance} duration={data.duration} />}
-             <Weather data={data.weather} current={data.currentWeather}/>
+              {(data.distance || data.travelError) &&
+              <TravelInfo lat={data.lat} lng={data.lon} distance={data.distance} duration={data.duration} travelError={data.travelError}/>}
+            {data.weatherError ?
+                <Message negative>{data.weatherError}</Message>
+              : <Weather data={data.weather} current={data.currentWeather}/>}
           </Card.Content>
           </Card>
 
@@ -51,6 +53,7 @@ export function Trail (props) {
 
 function TravelInfo(props) {
     const MapsUrlApi = "https://www.google.com/maps/search/?api=1&query=";
+  if (props.travelError) return <Message negative>{props.travelError}</Message>;
     return (
         <Segment basic textAlign={'center'}>
             <Label
